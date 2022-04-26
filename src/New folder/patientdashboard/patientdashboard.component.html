@@ -1,0 +1,174 @@
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bx-user-circle'></i>
+    <span class="logo_name">Patient</span>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a class="active" (click)="changeact(0)" (click)="activateClass(0)" [class.active]="sidearr[0].active">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name">Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a class="active" (click)="changeact(1)" (click)="activateClass(1)" [class.active]="sidearr[1].active">
+        <i class='bx bx-user-plus'></i>
+        <span class="links_name">Doctors</span>
+      </a>
+    </li>
+
+
+
+    <li class="log_out">
+      <a href="/signin">
+        <i class='bx bx-log-out'></i>
+        <span class="links_name">Log out</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" (click)="onc()">
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Dashboard</span>
+    </div>
+    
+    <div class="profile-details" (click)="changeact(2)">
+      <img src="https://randomuser.me/api/portraits/men/23.jpg" alt="">
+      <span class="admin_name">{{userdata.username}}</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+  </nav>
+
+  <div class="home-content">
+    <div class="overview-boxes" *ngIf="act!=actarr[2]">
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Doctors</div>
+          <div class="number">{{this.users.length}}</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bx-cart-alt cart'></i>
+      </div>
+
+    </div>
+
+    <div class="sales-boxes">
+
+      <div *ngIf="act==actarr[1]">
+
+        <div class="row">
+          <div class="col-12 grid-margin">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Doctors</h4>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th> Name </th>
+                        <th> Speciality </th>
+                        <th> Hospital </th>
+                        <th> Requests </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of users; index as i; first as isFirst">
+                        <td>
+
+
+                          <img src="assets/img/faces/face1.jpg" class="me-2" alt="image">
+                          <a href="#">{{user.Record.firstname+" "+user.Record.lastname}}</a>
+
+                        </td>
+                        <td>
+
+                          <a href="#">{{user.Record.speciality}}</a>
+
+                        </td>
+                        <td>
+
+                          <a href="#">{{user.Record.hospital}}</a>
+
+                        </td>
+                        <td>
+                          <div *ngFor="let user of users; index as i; first as isFirst">
+                            <li *ngIf="user.Record.active==0"><button (click)=changearr(i)
+                                (click)="activaterequest(i,1)">SendRequest+{{user.Record.username}}</button></li>
+                            <li *ngIf="user.Record.active==1">Request Sent</li>
+                            <li *ngIf="user.Record.active==2">Request Accepted</li>
+                            <li *ngIf="user.Record.active==3">Request Rejected</li>
+                          </div>
+                        </td>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="recent-sales box">
+            <div class="title">Doctors</div>
+            <div class="sales-details">
+              <ul class="details d-flex justify-content-lg-between">
+                <div>
+                  <li class="topic">UserName</li>
+                  <div *ngFor="let user of users; index as i; first as isFirst">
+                    <li><a href="#">{{user.Record.username}}</a></li>
+                  </div>
+                </div>
+                <div>
+                  <li class="topic">Name</li>
+                  <div *ngFor="let user of users; index as i; first as isFirst">
+                    <li><a href="#">{{user.Record.firstname+" "+user.Record.lastname}}</a></li>
+                  </div>
+                </div>
+
+                <div>
+                  <li class="topic">Speciality</li>
+                  <div *ngFor="let user of users; index as i; first as isFirst">
+                    <li><a href="#">{{user.Record.speciality}}</a></li>
+                  </div>
+                </div>
+                <div>
+
+                  <li class="topic">Hospital</li>
+                  <div *ngFor="let user of users; index as i; first as isFirst">
+                    <li><a href="#"> {{user.Record.hospital}}</a></li>
+                  </div>
+                </div>
+                <div>
+
+                  <li class="topic">Requests</li>
+                  <div *ngFor="let user of users; index as i; first as isFirst">
+                    <li *ngIf="user.Record.active==0"><button (click)=changearr(i)
+                        (click)="activaterequest(i,1)">SendRequest+{{user.Record.username}}</button></li>
+                    <li *ngIf="user.Record.active==1">Request Sent</li>
+                    <li *ngIf="user.Record.active==2">Request Accepted</li>
+                    <li *ngIf="user.Record.active==3">Request Rejected</li>
+                  </div>
+                </div>
+              </ul>
+
+            </div> -->
+            <div class="button">
+              <a href="#">See All</a>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="act==actarr[2]">
+          <div class="recent-sales box">
+            <app-patient></app-patient>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+</section>

@@ -1,0 +1,116 @@
+<section>
+  <div class="container">
+    <div class="user signinBx">
+      <div class="imgBx"><img src="https://nomadicibp.com/wp-content/uploads/2019/10/250130-P48MNV-852.jpg" alt="" />
+      </div>
+      <div class="formBx">
+        <form #userForm="ngForm" >
+          <h2>Log In</h2>
+          <label>Role</label>
+          <select class="custom-select" #rolesi="ngModel" class="form-control"
+            [class.is-invalid]="rolesi.invalid && rolesi.touched" name="role" [(ngModel)]="Signin.role" required>
+            <option selected>Select a Role</option>
+            <option *ngFor="let role of roles">{{role}}</option>
+          </select>
+          <label>Hospital</label>
+          <select class="custom-select" #hospitalsi="ngModel" class="form-control"
+            [class.is-invalid]="hospitalsi.invalid && hospitalsi.touched" name="hospital" [(ngModel)]="Signin.hospital" required>
+            <option selected>Select a Hospital</option>
+            <option *ngFor="let hospital of hospitals">{{hospital}}</option>
+          </select>
+          <input type="text" required #usernames="ngModel" class="form-control"
+            [class.is-invalid]="usernames.invalid && usernames.touched" name="username" placeholder="Username"
+            [(ngModel)]="Signin.username" />
+            
+          <input type="password" required #passwords="ngModel" class="form-control"
+            [class.is-invalid]="passwords.invalid && passwords.touched" name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter Password" [(ngModel)]="Signin.password" />
+            <input type="submit" name="" (click)="onClickSubmit()" value="Login" />
+          <p class="signup">
+            Don't have an account ?
+            <br />
+            <a (click)="onSignud()">Register as Patient</a>
+          </p>
+        </form>
+      </div>
+    </div>
+   <!-- <div class="user signupBx">
+      <div class="formBx">
+        <form #jj="ngForm">
+          <h2>Register Doctor</h2>
+          <input type="text" #firstnamei="ngModel" required class="form-control"
+            [class.is-invalid]="firstnamei.invalid && firstnamei.touched" name="firstname" placeholder="Firstname"
+            [(ngModel)]="Doctor.firstname" />
+
+          <input type="text" required #lastnamei="ngModel" placeholder="Lastname" class="form-control"
+            [class.is-invalid]="lastnamei.invalid && lastnamei.touched" name="lastname" [(ngModel)]="Doctor.lastname" />
+          <label>Hospital</label>
+          <select class="custom-select" #hospitali="ngModel" class="form-control"name="hospital"
+            [class.is-invalid]="hospitali.invalid && hospitali.touched" [(ngModel)]="Doctor.hospital" required>
+            <option selected>Select a Hospital</option>
+            <option *ngFor="let hospital of hospitals">{{hospital}}</option>
+          </select>
+          <input type="text" required #spec="ngModel" class="form-control" name="speciality"
+            [class.is-invalid]="spec.invalid && spec.touched" placeholder="Speciality"
+            [(ngModel)]="Doctor.speciality" />
+
+          <input type="text" required #usernamei="ngModel" class="form-control"
+            [class.is-invalid]="usernamei.invalid && usernamei.touched" name="username" placeholder="Username"
+            [(ngModel)]="Doctor.username" />
+          <input type="password" required #passwordi="ngModel" class="form-control"
+            [class.is-invalid]="passwordi.invalid && passwordi.touched" name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Create Password" [(ngModel)]="Doctor.password" />
+          <input type="submit" [disabled]="jj.form.invalid" (click)="onDocR()" value="Sign Up" />
+          <p class="signup">
+            Already have an account ?
+            <a (click)="onSignin()">Sign in.</a>
+          </p>
+        </form>
+      </div>
+      <div class="imgBx"><img
+          src="https://1.bp.blogspot.com/-nKFRkTCuShs/X_WlVVyahDI/AAAAAAAAAa0/mvxVlu5lyvMGteIhW338yOFygGaOdrgkwCLcBGAsYHQ/s1280/man-1351317_1280.png"
+          alt="" /></div>
+    </div>-->
+    <div class="user signupBx">
+      <div class="formBx" >
+        <form #jji="ngForm">
+          <h2>Register patient</h2>
+          <input type="text" #firstname="ngModel" required class="form-control"
+            [class.is-invalid]="firstname.invalid && firstname.touched" name="firstname" placeholder="Firstname"
+            [(ngModel)]="Patient.firstname" />
+
+          <input type="text" required #lastname="ngModel" placeholder="Lastname" class="form-control"
+            [class.is-invalid]="lastname.invalid && lastname.touched" name="lastname" [(ngModel)]="Patient.lastname" />
+          <label>Hospital</label>
+          <select class="custom-select" #hospital="ngModel" class="form-control" name="hospital"
+            [class.is-invalid]="hospital.invalid && hospital.touched" [(ngModel)]="Patient.hospital" required>
+            <option selected>Select a Hospital</option>
+            <option *ngFor="let hospital of hospitals">{{hospital}}</option>
+          </select>
+          <input type="tel" required #phone="ngModel" pattern="^\d{10}$" class="form-control" name="phonenumber"
+            [class.is-invalid]="phone.invalid && phone.touched" placeholder="Phone number"
+            [(ngModel)]="Patient.phonenumber" />
+
+          <input type="text" required #username="ngModel" class="form-control"
+            [class.is-invalid]="username.invalid && username.touched" name="username" placeholder="Username"
+            [(ngModel)]="Patient.username" />
+            
+          
+            
+          <input type="password" required #password="ngModel" class="form-control"
+            [class.is-invalid]="password.invalid && password.touched" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            name="password" placeholder="Create Password" [(ngModel)]="Patient.password" />
+            <input type="submit" name="" (click)="onPatR()" value="Signup" />
+            <p class="signup">
+            Already have an account ?
+            <a (click)="onSignin()">Sign in.</a>
+          </p>
+        </form>
+      </div>
+     
+      <div class="imgBx"><img
+          src="https://1.bp.blogspot.com/-nKFRkTCuShs/X_WlVVyahDI/AAAAAAAAAa0/mvxVlu5lyvMGteIhW338yOFygGaOdrgkwCLcBGAsYHQ/s1280/man-1351317_1280.png"
+          alt="" /></div>
+    </div>
+  </div>
+</section>

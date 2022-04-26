@@ -1,0 +1,29 @@
+
+  #exTab1 .tab-content {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+  }
+  
+#exTab1 .nav-pills > li > a {
+    border-radius: 0;
+  }
+.active{
+    display:none;
+}
+section {
+  position: relative;
+  min-height: 100vh;
+ /* background-color: #f8dd30;*/
+ background-image: url('https://www.gbsarchitects.co.uk/sites/default/files/Dilapidations_Fotolia.png');
+ background-size:auto;
+  
+}
+.landing-wrapper {
+  display: table;
+  width: 100%;
+  background: url('https://us.123rf.com/450wm/terng99/terng991712/terng99171200021/92498405-indoor-plant-on-white-floor-with-empty-concrete-wall-background-lounge-and-coffee-table-near-glass-w.jpg?ver=6');
+  background-position: center top;
+  height: 350px;
+  color: white;
+}

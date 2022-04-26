@@ -1,0 +1,137 @@
+<section>
+  <div class="container">
+    <div class="user signinBx">
+      <div class="imgBx"><img src="https://nomadicibp.com/wp-content/uploads/2019/10/250130-P48MNV-852.jpg" alt="" />
+      </div>
+      <div class="formBx">
+        <form #uf="ngForm">
+          <h2>Log In</h2>
+          <label>Role</label>
+          <select class="custom-select" #rolesi="ngModel" class="form-control"
+            [class.is-invalid]="rolesi.invalid && rolesi.touched" name="role" [(ngModel)]="Signin.role" required>
+            <option selected>Select a Role</option>
+            <option *ngFor="let role of roles">{{role}}</option>
+          </select>
+          <label>Hospital</label>
+          <select class="custom-select" #hospitalsi="ngModel" class="form-control"
+            [class.is-invalid]="hospitalsi.invalid && hospitalsi.touched" name="hospital" [(ngModel)]="Signin.hospital"
+            required>
+            <option selected>Select a Hospital</option>
+            <option *ngFor="let hospital of hospitals">{{hospital}}</option>
+          </select>
+          <input type="text"  #usernames="ngModel" class="form-control"
+            [class.is-invalid]="usernames.invalid && usernames.touched" name="username" placeholder="Username"
+            [(ngModel)]="Signin.username" required/>
+          <input type="password"  #passwords="ngModel" class="form-control" name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter Password" [(ngModel)]="Signin.password" required/>
+          <input type="submit" name="" (click)="onClickSubmit()" value="Login" />
+          {{uf.form.valid}}
+          <p class="signup">
+            Don't have an account ?
+            <a (click)="onSignud()">Register as Patient</a>
+          </p>
+        </form>
+      </div>
+    </div>
+    <div class="user signupBx">
+      <div class="formBx">
+        
+          <form #jj="ngForm">
+            <h3 style="text-align: center;">Register as a Patient</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+            <input type="text" #firstnamei="ngModel" required class="form-control"
+              [class.is-invalid]="firstnamei.invalid && firstnamei.touched" name="firstname" placeholder="Firstname"
+              [(ngModel)]="Patient.firstname" />
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+            <input type="text" #lastnamei="ngModel" required class="form-control"
+              [class.is-invalid]="lastnamei.invalid && lastnamei.touched" name="lastname" placeholder="Lastname"
+              [(ngModel)]="Patient.lastname" />
+            </div>
+          </div>
+            </div>
+            <input type="text" #emaili="ngModel" required class="form-control"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="emaili.invalid && emaili.touched" name="email" placeholder="Email"
+              [(ngModel)]="Patient.email" />
+            
+            <select class="custom-select" #genderi="ngModel" class="form-control" name="gender"
+              [class.is-invalid]="genderi.invalid && genderi.touched" [(ngModel)]="Patient.gender" required>
+              <option selected>Select a gender</option>
+              <option *ngFor="let i of gender">{{i}}</option>
+            </select>
+            
+            <textarea type="text" #addressi="ngModel" required class="form-control"
+              [class.is-invalid]="addressi.invalid && addressi.touched" name="address" placeholder="Address"
+              [(ngModel)]="Patient.address" ></textarea>
+            
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" #agei="ngModel" required class="form-control"
+              [class.is-invalid]="agei.invalid && agei.touched" name="age" placeholder="Age"
+              [(ngModel)]="Patient.age" />
+                  </div>
+                </div><!-- /.col -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" #phonenumberi="ngModel" required class="form-control"
+              [class.is-invalid]="phonenumberi.invalid && phonenumberi.touched" name="phonenumber"
+              placeholder="PhoneNumber" [(ngModel)]="Patient.phonenumber" />
+                  </div>
+                </div><!-- /.col -->
+              </div><!-- /.row -->
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" #weighti="ngModel" required class="form-control"
+              [class.is-invalid]="weighti.invalid && weighti.touched" name="weight" placeholder="Weight"
+              [(ngModel)]="Patient.weight" />
+                  </div>
+                </div><!-- /.col -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" #heighti="ngModel" required class="form-control"
+              [class.is-invalid]="heighti.invalid && heighti.touched" name="height" placeholder="Height"
+              [(ngModel)]="Patient.height" />
+                  </div>
+                </div><!-- /.col -->
+              </div><!-- /.row -->
+
+            
+            
+            <input type="text" #diseasei="ngModel" required class="form-control"
+              [class.is-invalid]="diseasei.invalid && diseasei.touched" name="disease" placeholder="Disease"
+              [(ngModel)]="Patient.disease" />
+          
+            <input type="text" #usernamei="ngModel" required class="form-control" 
+              [class.is-invalid]="usernamei.invalid && usernamei.touched" name="username" placeholder="UserName"
+              [(ngModel)]="Patient.username" />
+            
+            <input type="text" #passwordi="ngModel" required class="form-control"
+              [class.is-invalid]="passwordi.invalid && passwordi.touched" name="password" placeholder="Password"
+              [(ngModel)]="Patient.password" />
+            
+              <select class="custom-select" #hospitali="ngModel" class="form-control" name="hospital"
+              [class.is-invalid]="hospitali.touched && hospitali.value=='Select a Hospital'" [(ngModel)]="Patient.hospital" required>
+              <option selected>Select a Hospital</option>
+              <option *ngFor="let hospital of hospitals">{{hospital}}</option>
+            </select>
+            <input type="submit" name="" [disabled]="jj.form.invalid" (click)="onPatR()" value="Signup" />
+            <p class="signup">
+              Already have an account ?
+              <a (click)="onSignin()">Sign in.</a>
+            </p>
+          </form>
+        
+      </div>
+      <div class="imgBx"><img
+          src="https://1.bp.blogspot.com/-nKFRkTCuShs/X_WlVVyahDI/AAAAAAAAAa0/mvxVlu5lyvMGteIhW338yOFygGaOdrgkwCLcBGAsYHQ/s1280/man-1351317_1280.png"
+          alt="" /></div>
+    </div>
+  </div>
+</section>

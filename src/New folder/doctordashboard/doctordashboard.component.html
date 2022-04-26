@@ -1,0 +1,189 @@
+
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bx-user-plus'></i>
+    <span class="logo_name">Doctor</span>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a class="active" (click)="changeact(0)" (click)="activateClass(0)" [class.active]="sidearr[0].active">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name">Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="changeact(1)" (click)="activateClass(1)" [class.active]="sidearr[1].active">
+        <i class='bx bx-user-circle' ></i>
+        <span class="links_name">Patients</span>
+      </a>
+    </li>
+    <li *ngIf="useri.speciality=='Cardiology'">
+      <a (click)="changeact(4)" (click)="activateClass(2)" [class.active]="sidearr[2].active">
+        <i class='bx bx-user-circle' ></i>
+        <span class="links_name">CardioReq</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="changeact(5)" (click)="activateClass(3)" [class.active]="sidearr[3].active">
+        <i class='bx bx-user-circle' ></i>
+        <span class="links_name">PatientReq</span>
+      </a>
+    </li>
+   
+    <li class="log_out">
+      <a href="/signin">
+        <i class='bx bx-log-out'></i>
+        <span class="links_name">Log out</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" (click)="onc()">
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Dashboard</span>
+    </div>
+    
+    <div class="profile-details" (click)="changeact(2)">
+      <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="">
+      <span class="admin_name">{{userdata.username}}</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+  </nav>
+
+  <div class="home-content">
+    <div class="overview-boxes"  *ngIf="act!=actarr[2]">
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Patients</div>
+          <div class="number" *ngIf="users">{{users.length}}</div>
+          <div class="number" *ngIf="!users">0</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bx-cart-alt cart'></i>
+      </div>
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Requests</div>
+          <div class="number" *ngIf="requests">{{requests.length}}</div>
+          <div class="number" *ngIf="!requests">0</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bx-cart-alt cart'></i>
+      </div>
+    </div>
+
+    <div class="sales-boxes">
+      <div *ngIf="act==actarr[1]">
+      <div class="recent-sales box" >
+        <div class="title">Patients</div>
+        <div class="sales-details">
+          <ul class="details">
+            <li class="topic">Name</li>
+            <div *ngFor="let user of users; index as i; first as isFirst">
+              <li><a href="#">{{user.firstname+" "+user.lastname}}</a></li>
+            </div>
+          </ul>
+          <ul class="details">
+            <li class="topic">Phone Number</li>
+            <div *ngFor="let user of users; index as i; first as isFirst">
+              <li><a href="#">{{user.phonenumber}}</a></li>
+            </div>
+          </ul>
+          <ul class="details">
+            <li class="topic">Hospital</li>
+            <div *ngFor="let user of users; index as i; first as isFirst">
+              <li><a href="#"> {{user.hospital}}</a></li>
+            </div>
+          </ul>
+        </div>
+        <div class="button">
+          <a href="#">See All</a>
+        </div>
+      </div>
+      </div>
+
+      <div *ngIf="act==actarr[4]">
+        <div class="recent-sales box" >
+          <div class="title">Cardio Patients</div>
+          <div class="sales-details">
+            <ul class="details">
+              <li class="topic">Patient Username</li>
+              <div *ngFor="let user of cardioreqs; index as i; first as isFirst">
+                <li><a href="#">{{user.patient_username}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Hospital</li>
+              <div *ngFor="let user of cardioreqs; index as i; first as isFirst">
+                <li><a href="#"> {{user.hospital}}</a></li>
+              </div>
+            </ul>
+          </div>
+          <div class="button">
+            <a href="#">See All</a>
+          </div>
+        </div>
+        </div>
+
+        <div *ngIf="act==actarr[5]">
+          <div class="recent-sales box" >
+            <div class="title">Patients</div>
+            <div class="sales-details">
+              <ul class="details">
+                <li class="topic">Name</li>
+                <div *ngFor="let user of requests; index as i; first as isFirst">
+                  <li><a href="#">{{user.firstname+" "+user.lastname}}</a></li>
+                </div>
+              </ul>
+              <ul class="details">
+                <li class="topic">Phone Number</li>
+                <div *ngFor="let user of requests; index as i; first as isFirst">
+                  <li><a href="#">{{user.phonenumber}}</a></li>
+                </div>
+              </ul>
+              <ul class="details">
+                <li class="topic">Hospital</li>
+                <div *ngFor="let user of requests; index as i; first as isFirst">
+                  <li><a href="#"> {{user.hospital}}</a></li>
+                </div>
+              </ul>
+              <ul class="details">
+                <li class="topic">Requests</li>
+                <div *ngFor="let user of requests; index as i; first as isFirst">
+                <li  *ngIf = "user.active==0"><button (click)=changearr(i,1) (click)="activaterequest(i,1)" class="btn btn-success">Accept</button>&nbsp;
+                <button (click)=changearr(i,2) (click)="activaterequest(i,2)" class="btn btn-danger">Reject</button></li>
+                <li  *ngIf = "user.active==1" class="btn btn-success">Accepted</li>
+                <li  *ngIf = "user.active==2" class="btn btn-danger">Rejected</li>
+                  </div>
+              </ul>
+            </div>
+            <div class="button">
+              <a href="#">See All</a>
+            </div>
+          </div>
+          </div>
+
+
+      
+  
+      
+      
+      
+      <div *ngIf="act==actarr[2]">
+      <div class="recent-sales box">
+        <app-doctor></app-doctor>
+        </div>
+      </div>
+
+
+        </div>
+      </div>
+</section>

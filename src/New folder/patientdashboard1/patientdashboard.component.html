@@ -1,0 +1,105 @@
+
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bx-user-circle'></i>
+    <span class="logo_name">Patient</span>
+  </div>
+    <ul class="nav-links">
+      <li>
+        <a href="#" class="active">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-user-plus' ></i>
+          <span class="links_name">Doctors</span>
+        </a>
+      </li>
+    
+      
+
+      <li class="log_out">
+        <a href="#">
+          <i class='bx bx-log-out'></i>
+          <span class="links_name">Log out</span>
+        </a>
+      </li>
+    </ul>
+</div>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" (click)="onc()">
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Dashboard</span>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <i class='bx bx-search' ></i>
+    </div>
+    <div class="profile-details" (click)="changeact(1)">
+      <img src="https://randomuser.me/api/portraits/men/24.jpg" alt="">
+      <span class="admin_name">{{userdata.username}}</span>
+      <i class='bx bx-chevron-down' ></i>
+    </div>
+  </nav>
+
+  <div class="home-content">
+    <div class="overview-boxes" *ngIf="act!=actarr[1]">
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Doctors</div>
+          <div class="number">{{this.users.length}}</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bx-cart-alt cart'></i>
+      </div>
+      
+    </div>
+
+    <div class="sales-boxes">
+
+      <div  *ngIf="act==actarr[0]">
+      <div class="recent-sales box">
+        <div class="title">Doctors</div>
+        <div class="sales-details">
+          <ul class="details">
+            <li class="topic">Name</li>
+            <div *ngFor="let user of users; index as i; first as isFirst">
+            <li><a href="#" >{{user.Record.firstname+" "+user.Record.lastname}}</a></li>
+          </div>
+          </ul>
+          <ul class="details">
+          <li class="topic">Speciality</li>
+          <div *ngFor="let user of users; index as i; first as isFirst">
+          <li><a href="#">{{user.Record.speciality}}</a></li>
+        </div>
+        </ul>
+        <ul class="details">
+          <li class="topic">Hospital</li>
+          <div *ngFor="let user of users; index as i; first as isFirst">
+          <li><a href="#"> {{user.Record.hospital}}</a></li>
+        </div>
+        </ul>
+        </div>
+        <div class="button">
+          <a href="#">See All</a>
+        </div>
+      </div>
+    </div>
+      <div *ngIf="act==actarr[1]">
+        <div class="recent-sales box">
+          <app-patient></app-patient>
+          </div>
+      </div>
+  
+
+
+    </div>
+  </div>
+</section>
+

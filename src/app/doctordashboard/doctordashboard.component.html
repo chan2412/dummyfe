@@ -1,0 +1,420 @@
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bx-user-plus'></i>
+    <span class="logo_name">Doctor</span>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a class="active" (click)="changeact(0)" (click)="activateClass(0)" [class.active]="sidearr[0].active">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name">Dashboard</span>
+      </a>
+    </li>
+
+    <li>
+      <a (click)="changeact(1)" (click)="activateClass(1)" [class.active]="sidearr[1].active">
+        <i class='bx bx-user-circle'></i>
+        <span class="links_name">Patients</span>
+      </a>
+    </li>
+
+    <li *ngIf="useri.speciality=='cardiologist'">
+      <a (click)="changeact(3)" (click)="activateClass(2)" [class.active]="sidearr[2].active">
+        <i class='bx bx-user-circle'></i>
+        <span class="links_name">CardioReq</span>
+      </a>
+    </li>
+
+    <li>
+      <a (click)="changeact(4)" (click)="activateClass(3)" [class.active]="sidearr[3].active">
+        <i class='bx bx-user-circle'></i>
+        <span class="links_name">PatientReq</span>
+      </a>
+    </li>
+
+    <li>
+      <a (click)="changeact(5)" (click)="activateClass(4)" [class.active]="sidearr[4].active">
+        <i class='bx bx-user-circle'></i>
+        <span class="links_name">Add Record</span>
+      </a>
+    </li>
+
+    <li>
+      <a (click)="changeact(6)" (click)="activateClass(5)" [class.active]="sidearr[5].active">
+        <i class='bx bx-user-circle'></i>
+        <span class="links_name">View Record</span>
+      </a>
+    </li>
+
+
+    <li>
+      <a (click)="changeact(7)" (click)="activateClass(6)" [class.active]="sidearr[6].active">
+        <i class='bx bx-user-circle'></i>
+        <span class="links_name">View Report</span>
+      </a>
+    </li>
+
+    <li class="log_out">
+      <a href="/signin">
+        <i class='bx bx-log-out'></i>
+        <span class="links_name">Log out</span>
+      </a>
+    </li>
+
+  </ul>
+</div>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" (click)="onc()">
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Dashboard</span>
+    </div>
+
+    <div class="profile-details" (click)="changeact(2)">
+      <img src="https://randomuser.me/api/portraits/men/24.jpg" alt="">
+      <span class="admin_name">{{userdata.username}}</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+  </nav>
+
+  <div class="home-content">
+    <div class="overview-boxes" *ngIf="act==actarr[0]">
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Patients</div>
+          <div class="number" *ngIf="users">{{users.length}}</div>
+          <div class="number" *ngIf="!users">0</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bx-cart-alt cart'></i>
+      </div>
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Requests</div>
+          <div class="number" *ngIf="requests">{{requests.length}}</div>
+          <div class="number" *ngIf="!requests">0</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bx-cart-alt cart'></i>
+      </div>
+    </div>
+
+    <div class="sales-boxes">
+      <div *ngIf="act==actarr[1]">
+        <div class="recent-sales box">
+          <div class="title">Patients</div>
+          <div class="sales-details">
+            <ul class="details">
+              <li class="topic">Username</li>
+              <div *ngFor="let user of users; index as i; first as isFirst">
+                <li><a href="#">{{user.username}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Name</li>
+              <div *ngFor="let user of users; index as i; first as isFirst">
+                <li><a href="#">{{user.firstname+" "+user.lastname}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Phone Number</li>
+              <div *ngFor="let user of users; index as i; first as isFirst">
+                <li><a href="#">{{user.phonenumber}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Hospital</li>
+              <div *ngFor="let user of users; index as i; first as isFirst">
+                <li><a href="#"> {{user.hospital}}</a></li>
+              </div>
+            </ul>
+          </div>
+          <div class="button">
+            <a href="#">See All</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" *ngIf="act==actarr[4]">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Requests</h4>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th> Username </th>
+                      <th> Name </th>
+                      <th> Phonenumber </th>
+                      <th> Hospital </th>
+                      <th> Requests </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of requests; index as i; first as isFirst">
+                      <td>
+                        <img src="https://randomuser.me/api/portraits/men/23.jpg" class="me-2" alt="image">
+                        <a href="#">{{user.username}}</a>
+                      </td>
+                      <td>
+                        <a href="#">{{user.firstname+" "+user.lastname}}</a>
+                      </td>
+                      <td>
+                        <a href="#">{{user.phonenumber}}</a>
+                      </td>
+                      <td>
+                        <a href="#">{{user.hospital}}</a>
+                      </td>
+                      <td>
+                        <div>
+                          <ul *ngIf="user.active==0"><button (click)=changearr(i,1) (click)="activaterequest(i,1)"
+                              class="btn btn-success">Accept</button>&nbsp;
+                            <button (click)=changearr(i,2) (click)="activaterequest(i,2)"
+                              class="btn btn-danger">Reject</button>
+                          </ul>
+                          <ul *ngIf="user.active==1" class="btn btn-success">Accepted</ul>
+                          <ul *ngIf="user.active==2" class="btn btn-danger">Rejected</ul>
+                        </div>
+                      </td>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="act==actarr[3]">
+        <div class="recent-sales box">
+          <div class="title">Cardio Patients</div>
+          <div class="sales-details">
+            <ul class="details">
+              <li class="topic">Patient Username</li>
+              <div *ngFor="let user of cardioreqs; index as i; first as isFirst">
+                <li><a href="#">{{user.patient_username}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Hospital</li>
+              <div *ngFor="let user of cardioreqs; index as i; first as isFirst">
+                <li><a href="#"> {{user.hospital}}</a></li>
+              </div>
+            </ul>
+          </div>
+          <div class="button">
+            <a href="#">See All</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="act==actarr[5]">
+        <div class="recent-sales box">
+          <form #jj="ngForm">
+            <h2>Add Health Record</h2>
+            <br />
+            <div class="grid-container">
+              <div class="input_field item2">
+                <select class="custom-select" #hospitali="ngModel" class="form-control" name="select_hospital"
+                  [class.is-invalid]="hospitali.touched &&hospitali.value=='Select a hospital'"
+                  [(ngModel)]="Healthrec.hospital" required>
+                  <option selected>Select a hospital</option>
+                  <option *ngFor="let hospital of hospitalli">{{hospital}}</option>
+                </select>
+              </div>
+              <div class="input_field item3">
+                <select class="custom-select" #patienti="ngModel" class="form-control" name="select_patient"
+                  [class.is-invalid]="patienti.touched &&patienti.value=='Select a patient'"
+                  [(ngModel)]="Healthrec.patient" required>
+                  <option selected>Select a patient</option>
+                  <option *ngFor="let patient of users">{{patient.username}}</option>
+                </select>
+              </div>
+
+              <!-- <div class="input_field item4">
+                      <input type="text" #doctori="ngModel" required class="form-control" (keyup)="onkey3()"
+                        [class.is-invalid]="doctori.invalid && doctori.touched" name="doctor1"
+                        placeholder="doctor" [(ngModel)]="Healthrec.doctor" />
+                    </div> -->
+
+              <div class="input_field item5">
+                <textarea type="text" required #previousprbi="ngModel" class="form-control"
+                  placeholder="Previous_Problem" (keyup)="onkey4()"
+                  [class.is-invalid]="previousprbi.invalid && previousprbi.touched" name="previousprb"
+                  [(ngModel)]="Healthrec.previousprb"></textarea>
+              </div>
+
+              <div class="input_field item6">
+                <textarea type="text" required #previousmediprbi="ngModel" class="form-control"
+                  placeholder="Previous_MedicalProblem" (keyup)="onkey5()"
+                  [class.is-invalid]="previousmediprbi.invalid && previousmediprbi.touched" name="previousmediprb"
+                  [(ngModel)]="Healthrec.previousmediprb"></textarea>
+              </div>
+
+
+              <!--Date and Time-->
+
+              <div class="input_field item7">
+                <textarea type="text" required #labtesttakeni="ngModel" class="form-control"
+                  placeholder="Lab_Test_Taken" (keyup)="onkey6()"
+                  [class.is-invalid]="labtesttakeni.invalid && labtesttakeni.touched" name="labtesttaken"
+                  [(ngModel)]="Healthrec.labtesttaken"></textarea>
+
+              </div>
+
+              <div class="input_field item8">
+                <input type="text" #reportid="ngModel" required class="form-control" (keyup)="onkey7()"
+                  [class.is-invalid]="reportid.invalid && reportid.touched" name="report_id" placeholder="Report_id"
+                  [(ngModel)]="Healthrec.report_id" />
+              </div>
+
+              <div class="input_field item9">
+                <textarea type="text" required #currentprbi="ngModel" class="form-control" placeholder="Current_Problem"
+                  (keyup)="onkey8()" [class.is-invalid]="currentprbi.invalid && currentprbi.touched" name="currentprb"
+                  [(ngModel)]="Healthrec.currentprb"></textarea>
+              </div>
+
+              <div class="input_field item10">
+                <textarea type="text" required #plannedmedicationi="ngModel" class="form-control"
+                  placeholder="Plannedmedication" (keyup)="onkey9()"
+                  [class.is-invalid]="plannedmedicationi.invalid && plannedmedicationi.touched" name="plannedmedication"
+                  [(ngModel)]="Healthrec.plannedmedication"></textarea>
+              </div>
+
+              <div class="input_field item11">
+                <textarea type="text" required #otherdetaili="ngModel" class="form-control" (keyup)="onkey10()"
+                  [class.is-invalid]="otherdetaili.invalid && otherdetaili.touched" name="otherdetail"
+                  placeholder="otherdetail" [(ngModel)]="Healthrec.otherdetail"></textarea>
+              </div>
+            </div>
+            <br />
+
+            <br />
+            <input type="submit" [disabled]="jj.form.invalid" (click)="onHelrec()" value="Sign Up" />
+            <br /><br />
+
+          </form>
+        </div>
+      </div>
+
+
+      <div *ngIf="act==actarr[2]">
+        <div class="recent-sales box">
+          <app-doctor></app-doctor>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="act==actarr[6]">
+
+        <div class="col-lg-11 grid-margin" *ngIf="record==undefined">
+          <div class="input_field item3">
+            <select class="custom-select" #selectedpati="ngModel" class="form-control" name="selected_patient"
+              [class.is-invalid]="selectedpati.touched &&selectedpati.value=='Select a patient'"
+              [(ngModel)]="selectedpat" required>
+              <option selected>Select a patient</option>
+              <option *ngFor="let patient of users">{{patient.username}}</option>
+            </select>
+            <button class="btn btn-warning" (click)="getre()">Get Record</button>
+          </div>
+          <h3 class="text-center"> No Record to Display</h3>
+        </div>
+        <div class="row" *ngIf="record">
+
+
+
+          <div class="col-11 grid-margin" *ngFor="let re of record;index as i; first as isFirst;">
+            <div class="input_field item3">
+              <select class="custom-select" #selectedpati="ngModel" class="form-control" name="selected_patienti"
+                [class.is-invalid]="selectedpati.touched &&selectedpati.value=='Select a patient'"
+                [(ngModel)]="selectedpat" required>
+                <option selected>Select a patient</option>
+                <option *ngFor="let patient of users">{{patient.username}}</option>
+              </select>
+              <button class="btn btn-warning" (click)="getre()">Get Record</button>
+            </div>
+            <h3>{{"Record of "+(selectedpat)}}</h3>
+            <h3>{{"Record"+(i+1)}}</h3>
+            <br />
+            <table>
+              <tr>
+                <td>Current problems</td>
+                <td>{{re.current_problems}}</td>
+              </tr>
+              <tr>
+                <td>Doctor Id</td>
+                <td>{{re.doctor_username}}</td>
+              </tr>
+              <tr>
+                <td>Lab Tests Taken</td>
+                <td>{{re.lab_tests_taken}}</td>
+              </tr>
+              <tr>
+                <td>Other Details</td>
+                <td>{{re.other_details}}</td>
+              </tr>
+              <tr>
+                <td>Planned Medications</td>
+                <td>{{re.planned_medications}}</td>
+              </tr>
+              <tr>
+                <td>Previous Medication History</td>
+                <td>{{re.previous_medication_history}}</td>
+              </tr>
+              <tr>
+                <td>Previous Problems</td>
+                <td>{{re.previous_problems}}</td>
+              </tr>
+              <tr>
+                <td>Visited Date and Time</td>
+                <td>{{re.visited_date_and_time}}</td>
+              </tr>
+              <tr>
+                <td>Lab Test Report Id</td>
+                <td>{{re.report_id}}</td>
+              </tr>
+            </table>
+            <br />
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row" *ngIf="act==actarr[7]">
+        <div class="col-lg-11 grid-margin">
+          <div class="input_field item3">
+            <select class="custom-select" #patientiu="ngModel" class="form-control" name="select_patient"
+              [class.is-invalid]="patientiu.touched &&patientiu.value=='Select a patient'" [(ngModel)]="selectedpat"
+              required>
+              <option selected>Select a patient</option>
+              <option *ngFor="let patient of users">{{patient.username}}</option>
+            </select>
+          </div>
+          <div class="input_field item8">
+            <input type="text" #reportidi="ngModel" required class="form-control" [class.is-invalid]="reportidi.invalid && reportidi.touched" name="report_idi" placeholder="Report_id" [(ngModel)]="this.reportidj" />
+          </div>
+          <button class="btn btn-warning" (click)="getrep(selectedpat)">Get Report</button>
+          <br/>
+          
+          <table >
+            <tr *ngFor="let repo of vk;index as i;">
+              <td>{{vk[i]}}</td>
+              <td>{{vv[i]}}</td>
+            </tr>
+          </table>
+          <br />
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>

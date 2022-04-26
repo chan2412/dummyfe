@@ -1,0 +1,11 @@
+[{
+    "patientId":"string",
+    "medications":[
+        {
+            "medicationid":"string",
+            "symptoms":[],
+            "diseaseidentified":[],
+            "prescribedmedicines":[]
+        }
+    ]
+}]

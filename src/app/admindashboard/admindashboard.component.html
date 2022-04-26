@@ -1,0 +1,624 @@
+<div class="body">
+  <nav>
+    <div class="logo-name">
+      <div class="logo-image">
+        <i class='uil uil-hospital' style="font-size: 30px;"></i>
+      </div>
+      <span class="logo_name">Dashboard</span>
+    </div>
+
+    <div class="menu-items">
+      <ul class="nav-links">
+        <li>
+          <a (click)="changeact(actarr[0])" (click)="activateClass(0)" [class.active]="sidearr[0].active">
+            <i class='uil uil-estate'></i>
+            <span class="link-name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a (click)="changeact(actarr[1])" (click)="activateClass(1)" [class.active]="sidearr[1].active">
+            <i class='uil uil-user-circle'></i>
+            <span class="link-name">Patients</span>
+          </a>
+        </li>
+        <li>
+          <a (click)="changeact(actarr[2])" (click)="activateClass(2)" [class.active]="sidearr[2].active">
+            <i class='uil uil-user-md'></i>
+            <span class="link-name">Doctors</span>
+          </a>
+        </li>
+        <li>
+          <a (click)="changeact(actarr[3])" (click)="activateClass(3)" [class.active]="sidearr[3].active">
+            <i class='uil uil-flask'></i>
+            <span class="link-name">Lab Staffs</span>
+          </a>
+        </li>
+        <li>
+          <a (click)="changeact(actarr[4])" (click)="activateClass(4)" [class.active]="sidearr[4].active">
+            <i class='uil uil-user-md'></i>
+            <span class="link-name">Add Doctor</span>
+          </a>
+        </li>
+        <li>
+          <a (click)="changeact(actarr[5])" (click)="activateClass(5)" [class.active]="sidearr[5].active">
+            <i class='uil uil-flask'></i>
+            <span class="link-name">Add Lab Staff</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="logout-mode">
+        <li><a href="#">
+            <i class="uil uil-signout"></i>
+            <span class="link-name">Logout</span>
+          </a></li>
+
+        <li class="mode">
+          <a href="#">
+            <i class="uil uil-moon"></i>
+            <span class="link-name">Dark Mode</span>
+          </a>
+
+          <div class="mode-toggle" (click)="ofc2()">
+            <span class="switch"></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="dashboard">
+    <div class="top">
+      <i class="uil uil-bars sidebar-toggle" (click)="ofc1()"></i>
+
+      <div class="search-box">
+        <i class="uil uil-search"></i>
+        <input type="text" placeholder="Search here...">
+      </div>
+
+      <img src="https://randomuser.me/api/portraits/men/24.jpg" alt="">
+    </div>
+
+    <div class="dash-content">
+      <div class="overview">
+        <div class="title">
+          <i class="uil uil-tachometer-fast-alt"></i>
+          <span class="text">Dashboard</span>
+        </div>
+
+        <div class="boxes">
+          <div class="box box1">
+            <i class="uil uil-thumbs-up"></i>
+            <span class="text">Total Likes</span>
+            <span class="number">50,120</span>
+          </div>
+          <div class="box box2">
+            <i class="uil uil-comments"></i>
+            <span class="text">Comments</span>
+            <span class="number">20,120</span>
+          </div>
+          <div class="box box3">
+            <i class="uil uil-share"></i>
+            <span class="text">Total Share</span>
+            <span class="number">10,120</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity">
+        <div class="title">
+          <i class="uil uil-clock-three"></i>
+          <span class="text">Recent Activity</span>
+        </div>
+
+        <div class="activity-data">
+          <div class="data names">
+            <span class="data-title">Name</span>
+            <span class="data-list">Prem Shahi</span>
+            <span class="data-list">Deepa Chand</span>
+            <span class="data-list">Manisha Chand</span>
+            <span class="data-list">Pratima Shahi</span>
+            <span class="data-list">Man Shahi</span>
+            <span class="data-list">Ganesh Chand</span>
+            <span class="data-list">Bikash Chand</span>
+          </div>
+          <div class="data email">
+            <span class="data-title">Email</span>
+            <span class="data-list">premshahi@gmail.com</span>
+            <span class="data-list">deepachand@gmail.com</span>
+            <span class="data-list">prakashhai@gmail.com</span>
+            <span class="data-list">manishachand@gmail.com</span>
+            <span class="data-list">pratimashhai@gmail.com</span>
+            <span class="data-list">manshahi@gmail.com</span>
+            <span class="data-list">ganeshchand@gmail.com</span>
+          </div>
+          <div class="data joined">
+            <span class="data-title">Joined</span>
+            <span class="data-list">2022-02-12</span>
+            <span class="data-list">2022-02-12</span>
+            <span class="data-list">2022-02-13</span>
+            <span class="data-list">2022-02-13</span>
+            <span class="data-list">2022-02-14</span>
+            <span class="data-list">2022-02-14</span>
+            <span class="data-list">2022-02-15</span>
+          </div>
+          <div class="data type">
+            <span class="data-title">Type</span>
+            <span class="data-list">New</span>
+            <span class="data-list">Member</span>
+            <span class="data-list">Member</span>
+            <span class="data-list">New</span>
+            <span class="data-list">Member</span>
+            <span class="data-list">New</span>
+            <span class="data-list">Member</span>
+          </div>
+          <div class="data status">
+            <span class="data-title">Status</span>
+            <span class="data-list">Liked</span>
+            <span class="data-list">Liked</span>
+            <span class="data-list">Liked</span>
+            <span class="data-list">Liked</span>
+            <span class="data-list">Liked</span>
+            <span class="data-list">Liked</span>
+            <span class="data-list">Liked</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>
+</div>
+<!--<script>
+  
+  const body = document.querySelector("body"),
+  modeToggle = body.querySelector(".mode-toggle");
+  sidebar = body.querySelector("nav");
+  sidebarToggle = body.querySelector(".sidebar-toggle");
+
+let getMode = localStorage.getItem("mode");
+if(getMode && getMode ==="dark"){
+body.classList.toggle("dark");
+}
+
+let getStatus = localStorage.getItem("status");
+if(getStatus && getStatus ==="close"){
+sidebar.classList.toggle("close");
+}
+
+modeToggle.addEventListener("click", () =>{
+body.classList.toggle("dark");
+if(body.classList.contains("dark")){
+    localStorage.setItem("mode", "dark");
+}else{
+    localStorage.setItem("mode", "light");
+}
+});
+
+sidebarToggle.addEventListener("click", () => {
+sidebar.classList.toggle("close");
+if(sidebar.classList.contains("close")){
+    localStorage.setItem("status", "close");
+}else{
+    localStorage.setItem("status", "open");
+}
+})</script>
+
+
+
+
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bxl-microsoft-teams'></i>
+    <span class="logo_name">Admin</span>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a (click)="changeact(actarr[0])" (click)="activateClass(0)" [class.active]="sidearr[0].active">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name">Dashboard</span>
+      </a>
+    </li>
+    <li >
+      <a (click)="changeact(actarr[1])" (click)="activateClass(1)"[class.active]="sidearr[1].active">
+        <i class='bx bx-user-circle'></i>
+        <span class="links_name">Patients</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="changeact(actarr[2])" (click)="activateClass(2)" [class.active]="sidearr[2].active">
+        <i class='bx bx-user-plus'></i>
+        <span class="links_name">Doctors</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="changeact(actarr[3])" (click)="activateClass(3)" [class.active]="sidearr[3].active">
+        <i class='bx bx-test-tube'></i>
+        <span class="links_name">Lab Staffs</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="changeact(actarr[4])" (click)="activateClass(4)" [class.active]="sidearr[4].active">
+        <i class='bx bx-pie-chart-alt-2'></i>
+        <span class="links_name">Add Doctor</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="changeact(actarr[5])" (click)="activateClass(5)" [class.active]="sidearr[5].active">
+       <i class='bx bx-coin-stack'></i>
+        <i class="fas fa-vial"></i>
+        <span class="links_name">Add Lab Staff</span>
+      </a>
+    </li>
+
+    <li class="log_out">
+      <a href="/signin">
+        <i class='bx bx-log-out'></i>
+        <span class="links_name">Log out</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" (click)="onc()">
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Dashboard</span>
+    </div>
+    
+    
+    <div class="profile-details" *ngIf="act==actarr[2]" (click)="changeact(actarr[4])">
+      <i class="bx bx-plus-medical"></i>
+      <span class="admin_name">Add Doctor</span>
+    </div>
+    <div class="profile-details" *ngIf="act==actarr[3]" (click)="changeact(actarr[5])">
+      <i class="bx bx-plus-medical"></i>
+      <span class="admin_name">Add Labstaff</span>
+    </div>
+
+    
+
+    <div class="profile-details" (click)="changeact(actarr[6])">
+      <img src="https://randomuser.me/api/portraits/men/24.jpg" alt="">
+      <span class="admin_name">{{userdata.username}}</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+  </nav>
+
+  <div class="home-content">
+    <div class="overview-boxes" *ngIf="act==actarr[0]">
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Doctors</div>
+          <div class="number" *ngIf="doctors">{{doctors.length}}</div>
+          <div class="number" *ngIf="!doctors">0</div>
+
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bx-cart-alt cart'></i>
+      </div>
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Patients</div>
+          <div class="number" *ngIf="patients">{{patients.length}}</div>
+          <div class="number" *ngIf="!patients">0</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bxs-cart-add cart two'></i>
+      </div>
+
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Labstaff</div>
+          <div class="number" *ngIf="labstaffs">{{labstaffs.length}}</div>
+          <div class="number" *ngIf="!labstaffs">0</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bxs-cart-add cart two'></i>
+      </div>
+
+    </div>
+   
+
+    <div class="sales-boxes">
+      <div *ngIf="act==actarr[0]">
+        
+      </div>
+
+      <div *ngIf="act==actarr[1]">
+        <div class="recent-sales box">
+          <div class="title">Patients</div>
+          <div class="sales-details">
+            <ul class="details">
+              <li class="topic">Name</li>
+              <div *ngFor="let patient of patients; index as i; first as isFirst">
+                <li><a href="#">{{patient.Record.firstname+" "+patient.Record.lastname}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Phone Number</li>
+              <div *ngFor="let patient of patients; index as i; first as isFirst">
+                <li><a href="#">{{patient.Record.phonenumber}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Hospital</li>
+              <div *ngFor="let patient of patients; index as i; first as isFirst">
+                <li><a href="#"> {{patient.Record.hospital}}</a></li>
+              </div>
+            </ul>
+          </div>
+          <div class="button">
+            <a href="#">See All</a>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="act==actarr[2]">
+        <div class="recent-sales box">
+          <div class="title">Doctors</div>
+          <div class="sales-details">
+            <ul class="details">
+              <li class="topic">Name</li>
+              <div *ngFor="let doctor of doctors; index as i; first as isFirst">
+                <li><a href="#">{{doctor.Record.firstname+" "+doctor.Record.lastname}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Speciality</li>
+              <div *ngFor="let doctor of doctors; index as i; first as isFirst">
+                <li><a href="#">{{doctor.Record.speciality}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Hospital</li>
+              <div *ngFor="let doctor of doctors; index as i; first as isFirst">
+                <li><a href="#"> {{doctor.Record.hospital}}</a></li>
+              </div>
+            </ul>
+          </div>
+          <div class="button">
+            <a href="#">See All</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="act==actarr[3]">
+        <div class="recent-sales box">
+          <div class="title">Lab Staffs</div>
+          <div class="sales-details">
+            <ul class="details">
+              <li class="topic">Name</li>
+              <div *ngFor="let labstaff of labstaffs; index as i; first as isFirst">
+                <li><a href="#">{{labstaff.Record.firstname+" "+labstaff.Record.lastname}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Speciality</li>
+              <div *ngFor="let labstaff of labstaffs; index as i; first as isFirst">
+                <li><a href="#">{{labstaff.Record.speciality}}</a></li>
+              </div>
+            </ul>
+            <ul class="details">
+              <li class="topic">Hospital</li>
+              <div *ngFor="let labstaff of labstaffs; index as i; first as isFirst">
+                <li><a href="#"> {{labstaff.Record.hospital}}</a></li>
+              </div>
+            </ul>
+          </div>
+          <div class="button">
+            <a href="#">See All</a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div *ngIf="act==actarr[4]">
+        <div class="recent-sales box">
+          <form #jj="ngForm">
+            <h2>Register Doctor</h2>
+            <br />
+            <div class="grid-container">
+                <div class="input_field item1">
+                  <input type="text" #firstnamei="ngModel" required class="form-control"
+                    [class.is-invalid]="firstnamei.invalid && firstnamei.touched" name="firstname"
+                    placeholder="Firstname" [(ngModel)]="Doctor.firstname" />
+                </div>
+              
+                <div class="input_field item2">
+                  <input type="text" required #lastnamei="ngModel" class="form-control" placeholder="Lastname"
+                    [class.is-invalid]="lastnamei.invalid && lastnamei.touched" name="lastname"
+                    [(ngModel)]="Doctor.lastname" />
+
+                </div>
+              
+                <div class="input_field item3">
+                  <input type="text" required #degreei="ngModel" class="form-control" placeholder="Degree"
+                    [class.is-invalid]="degreei.invalid && degreei.touched" name="degree"
+                    [(ngModel)]="Doctor.degree" />
+
+                </div>
+             
+                <div class="input_field item4">
+                  <input type="text" required #specialityi="ngModel" class="form-control" placeholder="Speciality"
+                    [class.is-invalid]="specialityi.invalid && specialityi.touched" name="speciality"
+                    [(ngModel)]="Doctor.speciality" />
+
+                </div>
+              
+                <div class="input_field item5">
+                  <input type="text" required #experiencei="ngModel" class="form-control" placeholder="Experience"
+                    [class.is-invalid]="experiencei.invalid && experiencei.touched" name="experience"
+                    [(ngModel)]="Doctor.experience" />
+                </div>
+             
+                  <div class="input_field item6">
+                    <input type="email" required #emaild="ngModel" class="form-control" name="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  [class.is-invalid]="emaild.invalid && emaild.touched" placeholder="Email"
+                    [(ngModel)]="Doctor.email" />
+  
+                  </div>
+               
+                <div class="input_field item7">
+                  <select class="custom-select" #genderi="ngModel" class="form-control" name="gender"
+                    [class.is-invalid]="genderi.touched &&genderi.value=='Select a gender'" [(ngModel)]="Doctor.gender" required>
+                    <option selected>Select a gender</option>
+                    <option *ngFor="let gendero of genders">{{gendero}}</option>
+                  </select>
+                </div>
+             
+                <div class="input_field item8">
+                  <textarea type="text" required #addressi="ngModel" class="form-control" placeholder="Address"
+                    [class.is-invalid]="addressi.invalid && addressi.touched" name="address"
+                    [(ngModel)]="Doctor.address" ></textarea>
+                </div>
+             
+                <div class="input_field item9">
+                  <input type="text" required #phonenumberi="ngModel" class="form-control" placeholder="Phonenumber"
+                    [class.is-invalid]="phonenumberi.invalid && phonenumberi.touched" name="phonenumber"
+                    [(ngModel)]="Doctor.phonenumber" />
+
+                </div>
+              
+                <div class="input_field item10">
+                  <select class="custom-select" #hospitali="ngModel" class="form-control" name="hospital"
+                    [class.is-invalid]="hospitali.touched && hospitali.value=='Select a Hospital'" [(ngModel)]="Doctor.hospital" required>
+                    <option selected>Select a Hospital</option>
+                    <option *ngFor="let hospital of hospitals">{{hospital}}</option>
+                  </select>
+                </div>
+              
+
+             
+                <div class="input_field item11">
+                  <input type="text" required #usernamei="ngModel" class="form-control"
+                    [class.is-invalid]="usernamei.invalid && usernamei.touched" name="username" placeholder="Username"
+                    [(ngModel)]="Doctor.username" />
+                </div>
+              </div>
+            <br />
+          
+            <br />
+            <input type="submit" [disabled]="jj.form.invalid" (click)="onDocR()" value="Sign Up" />
+            <br /><br />
+           
+          </form>
+        </div>
+      </div>
+
+      <div *ngIf="act==actarr[5]">
+        <div class="recent-sales box">
+          <form #jj="ngForm">
+            <h2>Register Lab Staff</h2>
+            <br />
+            <div class="grid-container">
+                <div class="input_field item1">
+                  <input type="text" #firstnamel="ngModel" required class="form-control"
+                    [class.is-invalid]="firstnamel.invalid && firstnamel.touched" name="firstname"
+                    placeholder="Firstname" [(ngModel)]="Labstaff.firstname" />
+                </div>
+             
+                <div class="input_field item2">
+                  <input type="text" required #lastnamel="ngModel" class="form-control" placeholder="Lastname"
+                    [class.is-invalid]="lastnamel.invalid && lastnamel.touched" name="lastname"
+                    [(ngModel)]="Labstaff.lastname" />
+
+                </div>
+             
+                <div class="input_field item3">
+                  <input type="text" required #degreel="ngModel" class="form-control" placeholder="Degree"
+                    [class.is-invalid]="degreel.invalid && degreel.touched" name="degree"
+                    [(ngModel)]="Labstaff.degree" />
+
+                </div>
+             
+                <div class="input_field item4">
+                  <input type="text" required #specialityl="ngModel" class="form-control" placeholder="Speciality"
+                    [class.is-invalid]="specialityl.invalid && specialityl.touched" name="speciality"
+                    [(ngModel)]="Labstaff.speciality" />
+
+                </div>
+             
+                <div class="input_field item5">
+                  <input type="text" required #experiencel="ngModel" class="form-control" placeholder="Experience"
+                    [class.is-invalid]="experiencel.invalid && experiencel.touched" name="experience"
+                    [(ngModel)]="Labstaff.experience" />
+                </div>
+             
+                  <div class="input_field item6">
+                    <input type="email" required #emaildl="ngModel" class="form-control" name="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="emaildl.invalid && emaildl.touched" placeholder="Email"
+                    [(ngModel)]="Labstaff.email" />
+  
+                  </div>
+               
+                <div class="input_field item7">
+                  <select class="custom-select" #genderl="ngModel" class="form-control" name="gender"
+                  [class.is-invalid]="genderl.touched && genderl.value=='Select a gender'" [(ngModel)]="Labstaff.gender" required>
+                  <option selected>Select a gender</option>
+                  <option *ngFor="let gendero of genders">{{gendero}}</option>
+                </select>
+
+                </div>
+            
+                <div class="input_field item8">
+                  <textarea type="text" required #addressl="ngModel" class="form-control" placeholder="Address"
+                    [class.is-invalid]="addressl.invalid && addressl.touched" name="address"
+                    [(ngModel)]="Labstaff.address" ></textarea>
+                    
+                </div>
+             
+                <div class="input_field item9">
+                  <input type="text" required #phonenumberl="ngModel" class="form-control" placeholder="Phonenumber"
+                    [class.is-invalid]="phonenumberl.invalid && phonenumberl.touched" name="phonenumber"
+                    [(ngModel)]="Labstaff.phonenumber" />
+
+                </div>
+              
+                <div class="input_field item10">
+                  <select class="custom-select" #hospitall="ngModel" class="form-control" name="hospital"
+                    [class.is-invalid]="hospitall.touched && hospitall.value=='Select a Hospital'" [(ngModel)]="Labstaff.hospital" required>
+                    <option selected>Select a Hospital</option>
+                    <option>Laboratory</option>
+                  </select>
+                </div>
+            
+                <div class="input_field item11">
+                  <input type="text" required #usernamel="ngModel" class="form-control"
+                    [class.is-invalid]="usernamel.invalid && usernamel.touched" name="username" placeholder="Username"
+                    [(ngModel)]="Labstaff.username" />
+                </div>
+              </div>
+            <br />
+           
+            <br />
+            <input type="submit" [disabled]="jj.form.invalid" (click)="onLabR()" value="Sign Up" />
+            <br /><br />
+           
+          </form>
+        </div>
+      </div>
+
+      <div *ngIf="act==actarr[6]">
+        <div class="recent-sales box">
+          <app-admin></app-admin>
+          </div>
+        </div>
+
+
+    </div>
+
+
+
+  </div>
+</section> -->

@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center">
+    <div class="card-container ">
+        
+        <img class="round" src="https://randomuser.me/api/portraits/men/24.jpg" alt="user" />
+        <h3>{{userdata.firstname+ " "+ userdata.lastname }}</h3>
+        <h6>{{userdata.hospital}}</h6>
+        <p>{{userdata.speciality}}<br/>{{userdata.email}}</p>
+       
+        <button (click)="offclick()" >changePassword</button>
+            
+        <div *ngIf="showmycontainer">
+            <form #ff="ngForm">
+            <h1>Change Password</h1>
+            
+            <input type="password" required class="form-control" name="Curren tpassword" #password="ngModel" class="form-control"
+            [class.is-invalid]="password.invalid && password.touched"  placeholder="Enter Password"  [(ngModel)]="changepassword.Currentpassword"><br/>
+            <input type="password" required class="form-control" name="New password" #Enter_password="ngModel" class="form-control"
+            [class.is-invalid]="Enter_password.invalid && Enter_password.touched" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter New Password"  [(ngModel)]="changepassword.Newpassword"><br/>
+            <input type="password" required class="form-control" name="Confirm password" #Confirm_password="ngModel" class="form-control"
+    [class.is-invalid]="!(Confirm_password.value==Enter_password.value)"  placeholder="Confirm Password"  [(ngModel)]="changepassword.Confirmpassword"><br/>
+            <button [disabled]="ff.form.invalid" (click)="onclick()">Submit</button>
+            </form>
+        </div>
+    
+        
+        </div>
+    </div>
+    

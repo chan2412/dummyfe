@@ -1,0 +1,214 @@
+
+<div class="sidebar">
+  <div class="logo-details" >
+    <i class='bx bx-user-plus'></i>
+    <span class="logo_name">Lab Staff</span>
+  </div>
+    <ul class="nav-links">
+      <li>
+        <a (click)="changeact(actarr[0])" (click)="activateClass(0)" [class.active]="sidearr[0].active">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="changeact(actarr[1])" (click)="activateClass(1)" [class.active]="sidearr[1].active">
+          <i class='bx bx-user-circle' ></i>
+          <span class="links_name">Patients</span>
+        </a>
+      </li>
+ <li>
+  <a (click)="changeact(actarr[2])" (click)="activateClass(2)" [class.active]="sidearr[2].active">
+    <i class='bx bx-grid-alt' ></i>
+    <span class="links_name">Add Diagnosis Report</span>
+  </a>
+</li>
+      <li class="log_out">
+        <a href="/signin">
+          <i class='bx bx-log-out'></i>
+          <span class="links_name">Log out</span>
+        </a>
+      </li>
+    </ul>
+</div>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" (click)="onc()">
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Dashboard</span>
+    </div>
+    
+    <div class="profile-details" (click)="changeact(actarr[3])">
+      <img src="https://randomuser.me/api/portraits/men/24.jpg" alt="">
+      <span class="admin_name">{{userdata.username}}</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+  </nav>
+
+  <div class="home-content">
+    <div class="overview-boxes"  *ngIf="act==actarr[1]||act==actarr[0]">
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Total Patients</div>
+          <div class="number" *ngIf="users">{{users.length}}</div>
+          <div class="number" *ngIf="!users">0</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text">Up from yesterday</span>
+          </div>
+        </div>
+        <i class='bx bx-cart-alt cart'></i>
+      </div>
+    </div>
+
+    <div class="sales-boxes">
+      <div *ngIf="act==actarr[1]">
+      <div class="recent-sales box" >
+        <div class="title">Patients</div>
+        <div class="sales-details">
+          <ul class="details">
+            <li class="topic">Name</li>
+            <div *ngFor="let user of users; index as i; first as isFirst">
+              <li><a href="#">{{user.firstname+" "+user.lastname}}</a></li>
+            </div>
+          </ul>
+          <ul class="details">
+            <li class="topic">Phone Number</li>
+            <div *ngFor="let user of users; index as i; first as isFirst">
+              <li><a href="#">{{user.phonenumber}}</a></li>
+            </div>
+          </ul>
+          <ul class="details">
+            <li class="topic">Hospital</li>
+            <div *ngFor="let user of users; index as i; first as isFirst">
+              <li><a href="#"> {{user.hospital}}</a></li>
+            </div>
+          </ul>
+        </div>
+        <div class="button">
+          <a href="#">See All</a>
+        </div>
+      </div>
+      </div>
+   
+
+
+
+      <div *ngIf="act==actarr[2]">
+        <div class="recent-sales box ">
+          <form #jj="ngForm">
+            <h2>Add Diagnosis report</h2>
+            <br />
+          
+            <div class="grid-container">
+                <div class="input_field item1">
+                  <select class="custom-select" #genderi="ngModel" class="form-control" name="gender"
+                    [class.is-invalid]="genderi.invalid && genderi.touched && genderi.value!='Select a gender'" [(ngModel)]="report.patient_gender" required>
+                    <option selected>Select a gender</option>
+                    <option *ngFor="let gendero of genders">{{gendero}}</option>
+                  </select>
+                  
+                </div>
+      
+                <div class="input_field item2">
+                  <select class="custom-select" #patient_username="ngModel" class="form-control" name="patient_username"
+                    [class.is-invalid]="patient_username.invalid && patient_username.touched && patient_username.value!='Select a username'" [(ngModel)]="report.patient_username" required>
+                    <option selected>Select a username</option>
+                    <option *ngFor="let username of userarr">{{username}}</option>
+                  </select>
+                </div>
+             
+               <!-- <div class="input_field item3">
+                  <input type="text" required #labstaff_username="ngModel" class="form-control" name="labstaff_username"
+                  [class.is-invalid]="labstaff_username.invalid && labstaff_username.touched" placeholder="labstaff Username"
+                  [(ngModel)]="report.labstaff_username" />
+                </div>-->
+             
+                <div class="input_field item3">
+                  <input type="text" required #age="ngModel" class="form-control"
+                    [class.is-invalid]="age.invalid && age.touched" pattern="[0-9][0-9]" name="age" placeholder="Patient Age"
+                    [(ngModel)]="report.patient_age" />
+                </div>
+              
+             
+                <div class="input_field item4">
+                  <input type="text" required #pregnancies="ngModel" class="form-control"
+                    [class.is-invalid]="pregnancies.invalid && pregnancies.touched" name="pregnancies" placeholder="pregnancies"
+                    [(ngModel)]="report.pregnancies" />
+                </div>
+              
+                <div class="input_field item5">
+                  <input type="text" required #glucose="ngModel" class="form-control"
+                    [class.is-invalid]="glucose.invalid && glucose.touched" name="glucose" placeholder="glucose"
+                    [(ngModel)]="report.glucose" />
+                </div>
+              
+                <div class="input_field item6">
+                  <input type="text" required #blood_pressure="ngModel" class="form-control"
+                    [class.is-invalid]="blood_pressure.invalid && blood_pressure.touched" name="blood_pressure" placeholder="blood_pressure"
+                    [(ngModel)]="report.blood_pressure" />
+                </div>
+             
+             
+                <div class="input_field item7">
+                  <input type="text" required #skin_thickness="ngModel" class="form-control"
+                    [class.is-invalid]="skin_thickness.invalid && skin_thickness.touched" name="skin_thickness" placeholder="skin_thickness"
+                    [(ngModel)]="report.skin_thickness" />
+                </div>
+              
+                <div class="input_field item8">
+                  <input type="text" required #bmi="ngModel" class="form-control"
+                    [class.is-invalid]="bmi.invalid && bmi.touched" name="bmi" placeholder="bmi"
+                    [(ngModel)]="report.bmi" />
+                </div>
+              
+                <div class="input_field item9">
+                  <input type="text" required #diabetespedigreefunction="ngModel" class="form-control"
+                    [class.is-invalid]="diabetespedigreefunction.invalid && diabetespedigreefunction.touched" name="diabetespedigreefunction" placeholder="diabetespedigreefunction"
+                    [(ngModel)]="report.diabetespedigreefunction" />
+                </div>
+                <div class="input_field item10">
+                  <input type="text" required #insulin="ngModel" class="form-control"
+                    [class.is-invalid]="insulin.invalid && insulin.touched" name="insulin" placeholder="insulin"
+                    [(ngModel)]="report.insulin" />
+                </div>
+                <div class="input_field item12">
+                  <input type="text" required #outcome="ngModel" class="form-control" [disabled]="true" name="outcome" placeholder="outcome"
+                    [(ngModel)]="report.outcome" />
+                </div>
+                <!--<div class="input_field item11">
+                  <select class="custom-select" #outcome="ngModel" class="form-control" name="outcome"
+                    [class.is-invalid]="outcome.invalid && outcome.touched" [(ngModel)]="report.outcome" required>
+                    <option selected>Select an Outcome</option>
+                    <option >Positive</option>
+                    <option >Negative</option>
+                  </select>
+                </div>-->
+              </div>
+            <br />
+            <br />
+            <button class="btn btn-primary" [disabled]="jj.form.invalid"  (click)="oncal()">Caclulate</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" [disabled]="jj.form.invalid" (click)="onsub()"  value="Sign Up" />
+            
+          
+          </form>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <div *ngIf="act==actarr[3]">
+        <div class="recent-sales box">
+          <app-labstaff></app-labstaff>
+          </div>
+        </div>
+
+        
+    </div>
+  </div>
+</section>
+
